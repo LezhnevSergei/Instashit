@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}tape{% endblock title %}
+
+{% block tape %}
+
+    {% for post in posts %}
+        <div class="card" style="margin-bottom: 20px; border: 1px solid black;">
+            <img src="{% static 'img/posts/'%}{{ post.image }}" alt="Изображение" %}" class="card-img-top">
+            <div class="card-body" style="background-color: #C0C0C0;">
+                <h5 class="card-title" style="font-size:17px; font-weight: bold;">{{ post.author }}</h5><hr>
+
+                {% if post.comment != "" %}
+                    <p class="card-text" style="font-size:18px"> {{ post.comment }} </p><hr>
+                {% else %}
+                    <p class="card-text" style="font-size:12px"> Комментария нет </p><hr>
+                {% endif %}
+
+                <p class="card-text" style="font-size:12px"> {{ post.pub_date }} </p>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock tape %}
